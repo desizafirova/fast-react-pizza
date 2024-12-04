@@ -96,11 +96,10 @@ export async function action({ request }) {
     priority: data.priority === 'on',
   };
 
+  const errors = {};
   if (Object.keys(errors).length > 0) return errors;
 
   const newOrder = await createOrder(order);
-
-  const errors = {};
 
   if (!isValidPhone(order.phone))
     errors.phone =
