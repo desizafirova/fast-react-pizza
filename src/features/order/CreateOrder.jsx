@@ -97,13 +97,12 @@ export async function action({ request }) {
   };
 
   const errors = {};
-  if (Object.keys(errors).length > 0) return errors;
-
-  const newOrder = await createOrder(order);
-
   if (!isValidPhone(order.phone))
     errors.phone =
       'Please give us your correct number. We might need it to contact you.';
+  if (Object.keys(errors).length > 0) return errors;
+
+  const newOrder = await createOrder(order);
 
   // redirect - another function, provided by React Router that will basically create a new response.
   return redirect(`/order/${newOrder.id}`);
