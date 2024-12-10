@@ -24,7 +24,8 @@ function MenuItem({ pizza }) {
               Sold out
             </p>
           )}
-          <Button type="small">Add to cart</Button>
+
+          {!soldOut ? <Button type="small">Add to cart</Button> : null}
         </div>
       </div>
     </li>
